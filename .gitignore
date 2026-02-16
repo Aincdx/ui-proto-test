@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# GLB models at repo root (only serve from public/)
+/*.glb
+
 # debug
 npm-debug.log*
 yarn-debug.log*

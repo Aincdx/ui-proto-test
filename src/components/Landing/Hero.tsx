@@ -4,7 +4,18 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { InfiniteGrid } from "@/components/ui/infinite-grid";
 import { AURORA_PALETTES } from "@/theme/aurora-palettes";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+/* Lazy-load the 3D canvas — no SSR (WebGL requires browser APIs) */
+const HeroModel3D = dynamic(() => import("./HeroModel3D"), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="flex h-full w-full items-center justify-center"
+      aria-label="Loading 3D model…"
+    />
+  ),
+});
 
 /* ── Palette preview toggle ──────────────────────────────────
  * Default: undefined → renders the original Aceternity colours.
@@ -210,32 +221,18 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right — Hero Product Image */}
+        {/* Right — Interactive 3D Model */}
         <motion.div
-          className="relative flex flex-1 items-center justify-center overflow-visible md:justify-end"
+          className="relative flex flex-1 items-center justify-center md:justify-end"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
           <div
             className="relative w-full max-w-[520px] xl:max-w-[640px] 2xl:max-w-[720px]"
-            style={{ transform: "scale(1.75)", transformOrigin: "60% center" }}
+            style={{ aspectRatio: "1 / 1" }}
           >
-            {/* Glow effect behind the board */}
-            <div
-              className="absolute -inset-8 rounded-full opacity-30 blur-3xl"
-              style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 10%)" }}
-              aria-hidden="true"
-            />
-            <Image
-              src="/hero-board.png"
-              alt="Jumperless V5 programmable breadboard with RGB LEDs illuminating circuit connections"
-              width={720}
-              height={640}
-              priority
-              className="relative z-10 w-full h-auto drop-shadow-2xl"
-              style={{ filter: "drop-shadow(0 12px 40px rgba(59,163,217,0.25))" }}
-            />
+            <HeroModel3D />
           </div>
         </motion.div>
       </div>
