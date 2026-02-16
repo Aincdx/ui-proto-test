@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "uipro:init:copilot": "uipro init --ai copilot",
+    "uipro:init:claude": "uipro init --ai claude",
+    "uipro:init:cursor": "uipro init --ai cursor",
+    "uipro:init:all": "uipro init --ai all",
+    "uipro:update": "uipro update",
+    "uipro:versions": "uipro versions",
+    "uipro:help": "uipro --help"
   },
   "dependencies": {
     "next": "16.1.6",
