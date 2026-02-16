@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5F3FF;
-  --foreground: #1E1B4B;
-  --primary: #6366F1;
-  --secondary: #818CF8;
-  --cta: #10B981;
+  --primary: #3BA3D9;
+  --primary-dark: #2E8BC0;
+  --primary-light: #E8F4FD;
+  --hero-gradient-start: #E3F2FD;
+  --hero-gradient-end: #F8FCFF;
+  --text-dark: #1A1A2E;
+  --text-body: #6B7280;
+  --text-nav: #4A5568;
+  --border-card: #B8DCF0;
+  --border-light: #E2E8F0;
+  --bg-light: #F7FAFC;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-cta: var(--cta);
-  --font-sans: var(--font-plus-jakarta);
+  --color-background: #ffffff;
+  --color-foreground: var(--text-dark);
+  --font-sans: var(--font-inter);
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-plus-jakarta), sans-serif;
+  background: #ffffff;
+  color: var(--text-dark);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  margin: 0;
+  padding: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

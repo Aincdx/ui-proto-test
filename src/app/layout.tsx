@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "AI Circuit Lab",
-  description: "Intelligent AI circuit design and simulation platform",
+  title: "PROTOBOARD — Build Intelligent Circuits with AI",
+  description:
+    "AI-driven circuit Generation, diagram SPICE, and guided Physical assembly.",
 };
 
 export default function RootLayout({
@@ -20,12 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${plusJakarta.variable} antialiased`}
-        style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}
-      >
-        {children}
-      </body>
+      <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
 }
