@@ -8,14 +8,16 @@
  * Typography: Inter
  */
 
-import Navbar from "@/components/Landing/Navbar";
+import { InteractiveNavbar } from "@/components/ui/interactive-navbar";
 import Hero from "@/components/Landing/Hero";
 import HowItWorks from "@/components/Landing/HowItWorks";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <header className="sticky top-0 z-50 w-full">
+        <InteractiveNavbar />
+      </header>
       <Hero />
       <HowItWorks />
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import { InfiniteGrid } from "@/components/ui/infinite-grid";
 import { AURORA_PALETTES } from "@/theme/aurora-palettes";
 
 /* ── Palette preview toggle ──────────────────────────────────
@@ -12,11 +13,16 @@ const AURORA_PREVIEW = undefined;
  //const AURORA_PREVIEW = AURORA_PALETTES.mintLavender;
  //const AURORA_PREVIEW = AURORA_PALETTES.sunsetSoft;
 
+/* ── InfiniteGrid toggle ─────────────────────────────────────
+ * Set to false to disable the grid overlay without removing code.
+ */
+const SHOW_INFINITE_GRID = true;
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Aurora Background — direction: left→right, palette overridable */}
-      <div className="absolute inset-0 z-0">
+      {/* Layer 0 — Aurora Background (bottom) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <AuroraBackground
           className="h-full w-full"
           showRadialGradient={true}
@@ -24,8 +30,15 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content — unchanged */}
-      <div className="relative z-10">
+      {/* Layer 1 — InfiniteGrid overlay (above Aurora, behind content) */}
+      {SHOW_INFINITE_GRID && (
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <InfiniteGrid className="h-full w-full" />
+        </div>
+      )}
+
+      {/* Layer 2 — Content (top, interactive) */}
+      <div className="relative z-20">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-12 px-12 pb-[100px] pt-[80px] md:flex-row md:items-start">
         {/* Left — Text Block */}
         <div className="flex max-w-[480px] flex-1 flex-col justify-center pt-[20px]">

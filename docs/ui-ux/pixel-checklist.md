@@ -254,3 +254,194 @@ const AURORA_PREVIEW = undefined;                        // ← default (origina
 | `src/components/ui/aurora-background.tsx` | **Modified** — added `palette?` prop, `buildAuroraGradient()` with defaults, `scaleX(-1)` on decorative div, removed hardcoded `[--aurora:…]` class (now inline style) |
 | `src/theme/aurora-palettes.ts` | **Created** — 3 preset palettes (`coolCyan`, `mintLavender`, `sunsetSoft`) |
 | `src/components/Landing/Hero.tsx` | **Modified** — imports `AURORA_PALETTES`, adds `AURORA_PREVIEW` toggle constant, passes `palette` prop |
+
+---
+
+## Change Log: InfiniteGrid Overlay Integration
+
+**Date:** 2026-02-15
+
+### Layer Architecture
+
+The Hero section now uses a **3-layer stack** within a single `<section className="relative overflow-hidden">`:
+
+| Layer | z-index | Element | pointer-events |
+|-------|---------|---------|----------------|
+| Background | `z-0` | `AuroraBackground` | `pointer-events-none` |
+| Overlay | `z-10` | `InfiniteGrid` | `pointer-events-none` |
+| Content | `z-20` | Hero text, buttons, card | default (interactive) |
+
+### CSS Classes Used
+
+| Element | Classes |
+|---------|---------|
+| Aurora wrapper | `absolute inset-0 z-0 pointer-events-none` |
+| InfiniteGrid wrapper | `absolute inset-0 z-10 pointer-events-none` |
+| Content wrapper | `relative z-20` |
+| Hero section | `relative overflow-hidden` |
+
+### Clipping & Containment
+
+- `overflow-hidden` on the `<section>` clips any InfiniteGrid elements that overflow the hero bounds.
+- InfiniteGrid **never** bleeds into Navbar (above, sticky `z-50`) nor into How It Works (below, separate section).
+- Both Aurora and InfiniteGrid use `pointer-events-none` so buttons/links remain fully interactive.
+
+### InfiniteGrid Component Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional CSS classes |
+| `cellSize` | `number` | `40` | Grid cell size in px |
+| `speedX` | `number` | `0.5` | Horizontal auto-scroll speed |
+| `speedY` | `number` | `0.5` | Vertical auto-scroll speed |
+| `baseOpacity` | `number` | `0.05` | Opacity of always-visible grid layer |
+| `revealOpacity` | `number` | `0.40` | Opacity of mouse-reveal grid layer |
+| `revealRadius` | `number` | `300` | Radius (px) of the mouse-reveal spotlight |
+| `strokeClass` | `string` | `"text-muted-foreground"` | Tailwind text-color class for grid lines |
+
+### Recommended Visual Tuning (tested defaults)
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| `baseOpacity` | `0.05` | Subtle ambient grid visible at all times |
+| `revealOpacity` | `0.40` | Mouse spotlight reveals grid without harming readability |
+| `revealRadius` | `300` | Large enough spotlight for smooth UX |
+| `speedX` / `speedY` | `0.5` | Gentle scroll, not distracting |
+
+### How to Enable / Disable InfiniteGrid
+
+In `src/components/Landing/Hero.tsx`, toggle the constant:
+
+```ts
+const SHOW_INFINITE_GRID = true;   // ← set to false to disable
+```
+
+Or simply comment out the InfiniteGrid block in the JSX.
+
+### Checkpoints Verified
+
+| Checkpoint | Status | Notes |
+|------------|--------|-------|
+| Clipping correct | ✅ | `overflow-hidden` on section; grid doesn't leak |
+| Overlay layering | ✅ | Grid visible above Aurora, below content |
+| Buttons interactive | ✅ | `pointer-events-none` on overlay layers |
+| Text legibility | ✅ | Low base opacity + z-20 content unaffected |
+| Performance | ✅ | `useAnimationFrame` for GPU-efficient animation |
+| Build passes | ✅ | `npm run build` verified |
+
+### Files Changed
+
+| File | Action |
+|------|--------|
+| `src/components/ui/infinite-grid.tsx` | **Created** — InfiniteGrid component (adapted from 21st.dev/shadway, refactored as pure overlay) |
+| `src/components/Landing/Hero.tsx` | **Modified** — added InfiniteGrid import, `SHOW_INFINITE_GRID` toggle, 3-layer z-index structure |
+| `docs/ui-ux/pixel-checklist.md` | **Modified** — added this integration documentation |
+
+---
+
+## Change Log: 3D Interactive Navbar Integration
+
+**Date:** 2026-02-15
+
+### Overview
+
+Replaced the original static white navbar (`src/components/Landing/Navbar.tsx`) with a **3D Interactive Navbar** based on the component from [21st.dev/erikx/3d-interactive-navbar](https://21st.dev/community/components/erikx/3d-interactive-navbar/default). The navbar features Three.js-powered 3D card elements, decrypt text effects on hover, and a mega-dropdown for feature exploration.
+
+### Component Location
+
+| File | Description |
+|------|-------------|
+| `src/components/ui/interactive-navbar.tsx` | Full 3D Interactive Navbar component |
+| `src/app/page.tsx` | Layout integration (`<header>` wrapper) |
+| `src/components/Landing/Navbar.tsx` | **Kept** (original, no longer imported — available for rollback) |
+
+### Positioning & Z-Index
+
+| Element | Position | z-index | Notes |
+|---------|----------|---------|-------|
+| `<header>` wrapper | `sticky top-0` | `z-50` | Always on top of Aurora/InfiniteGrid |
+| `<nav>` | within header | — | Black bg, full-width |
+| Explore dropdown | `fixed top-20` | `z-50` | Full-screen mega-dropdown |
+| Mobile menu | `fixed top-20` | `z-50` | Slides in from top |
+
+### Navigation Links (Brandized)
+
+| Label | href | Notes |
+|-------|------|-------|
+| HOME | `/` | Main landing |
+| ABOUT | `/#about` | Scroll to about section |
+| HOW IT WORKS | `/#how-it-works` | Scroll to HowItWorks |
+| CONTACT | `/#contact` | Scroll to contact |
+| EXPLORE (dropdown) | — | Opens mega-dropdown with feature cards |
+| SIGN UP (CTA) | `/signup` | Primary action button (`#3BA3D9`) |
+
+### Brand Configuration
+
+| Property | Value |
+|----------|-------|
+| Logo | PROTOBOARD circuit-board SVG (original logo preserved) |
+| Brand text | "PROTOBOARD" |
+| Brand color | `#3BA3D9` |
+| CTA button | `SIGN UP` — rounded pill, `#3BA3D9` background |
+
+### Animations & Effects (from original component)
+
+| Effect | Description | Status |
+|--------|-------------|--------|
+| Decrypt text | Letters scramble on hover, then resolve | ✅ Preserved |
+| Dotted grid button | EXPLORE button shows dot-grid pattern on hover | ✅ Preserved |
+| White fill animation | EXPLORE button fills white when dropdown opens | ✅ Preserved |
+| 3D Card (Three.js) | Interactive reflective card in dropdown with parallax | ✅ Preserved |
+| Row stagger | Feature items appear row-by-row with stagger | ✅ Preserved |
+| Hover wipe | Feature items show left-to-right wipe on hover | ✅ Preserved |
+| Mobile slide | Mobile menu slides open/closed with AnimatePresence | ✅ Preserved |
+
+### Dependencies Added
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `three` | latest | Three.js 3D rendering engine |
+| `@react-three/fiber` | latest | React renderer for Three.js |
+| `@react-three/drei` | latest | Useful helpers (RoundedBox, MeshReflectorMaterial, Html) |
+| `@types/three` | latest | TypeScript type definitions |
+
+### Responsiveness
+
+| Breakpoint | Behavior |
+|------------|----------|
+| Desktop (md+) | Full navbar: brand + EXPLORE dropdown + nav links + Sign Up |
+| Mobile (<md) | Brand + hamburger icon → animated mobile menu with all sections |
+
+### How to Revert to Original Navbar
+
+In `src/app/page.tsx`, change the import:
+
+```ts
+// Current (3D navbar):
+import { InteractiveNavbar } from "@/components/ui/interactive-navbar";
+
+// Revert to original:
+import Navbar from "@/components/Landing/Navbar";
+```
+
+And replace `<InteractiveNavbar />` with `<Navbar />` in the JSX.
+
+### Checkpoints Verified
+
+| Checkpoint | Status | Notes |
+|------------|--------|-------|
+| Old navbar replaced | ✅ | `Navbar.tsx` no longer imported |
+| 3D animations intact | ✅ | Three.js Canvas + decrypt effects working |
+| Links functional | ✅ | All navigate to correct sections |
+| Responsiveness | ✅ | Mobile hamburger + slide-in menu |
+| No section invasion | ✅ | `sticky top-0 z-50` keeps navbar above Aurora/Grid |
+| Build passes | ✅ | `npm run build` verified |
+
+### Files Changed
+
+| File | Action |
+|------|--------|
+| `src/components/ui/interactive-navbar.tsx` | **Created** — 3D Interactive Navbar (adapted from 21st.dev/erikx) |
+| `src/app/page.tsx` | **Modified** — replaced `Navbar` import with `InteractiveNavbar`, wrapped in `<header>` |
+| `package.json` | **Modified** — added `three`, `@react-three/fiber`, `@react-three/drei`, `@types/three` |
+| `docs/ui-ux/pixel-checklist.md` | **Modified** — added this documentation |
