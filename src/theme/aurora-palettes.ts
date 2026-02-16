@@ -11,28 +11,28 @@ import type { AuroraPalette } from "@/components/ui/aurora-background";
  * Aceternity blue / indigo / violet colours.
  */
 export const AURORA_PALETTES = {
-  /** Cool cyan — icy, tech-forward feel */
-  coolCyan: {
-    a1: "#9AE6FF",
-    a2: "#60A5FA",
-    a3: "#A7F3D0",
-    a4: "#BAE6FD",
-    a5: "#67E8F9",
+  /** Engineering blue — desaturated, authoritative, blueprint-adjacent */
+  engineeringBlue: {
+    a1: "#7BB5D0",
+    a2: "#5C8DAD",
+    a3: "#8CAFC5",
+    a4: "#A5C3D6",
+    a5: "#6B9DB8",
   },
-  /** Mint / lavender — calm, approachable */
-  mintLavender: {
-    a1: "#A7F3D0",
-    a2: "#C7D2FE",
-    a3: "#93C5FD",
-    a4: "#D9F99D",
-    a5: "#A5B4FC",
+  /** Steel slate — cold, controlled, instrument-panel feel */
+  steelSlate: {
+    a1: "#8A9FB5",
+    a2: "#6E8A9E",
+    a3: "#9BB2C4",
+    a4: "#7C96AB",
+    a5: "#A3B8C8",
   },
-  /** Sunset-soft — warm, inviting */
-  sunsetSoft: {
-    a1: "#FDBA74",
-    a2: "#FCA5A5",
-    a3: "#FBCFE8",
-    a4: "#FDE68A",
-    a5: "#F9A8D4",
+  /** Lab neutral — minimal, academic, pure technical */
+  labNeutral: {
+    a1: "#94A8B8",
+    a2: "#7A92A5",
+    a3: "#A8BCC9",
+    a4: "#8DA1B2",
+    a5: "#B0C2CF",
   },
 } as const satisfies Record<string, AuroraPalette>;

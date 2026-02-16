@@ -538,12 +538,12 @@ function ProtoboardLogo() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="14" cy="14" r="13" stroke="#3BA3D9" strokeWidth="2" />
-      <circle cx="14" cy="14" r="5" fill="#3BA3D9" />
-      <line x1="14" y1="1" x2="14" y2="7" stroke="#3BA3D9" strokeWidth="2" />
-      <line x1="14" y1="21" x2="14" y2="27" stroke="#3BA3D9" strokeWidth="2" />
-      <line x1="1" y1="14" x2="7" y2="14" stroke="#3BA3D9" strokeWidth="2" />
-      <line x1="21" y1="14" x2="27" y2="14" stroke="#3BA3D9" strokeWidth="2" />
+      <circle cx="14" cy="14" r="13" stroke="var(--primary)" strokeWidth="2" />
+      <circle cx="14" cy="14" r="5" fill="var(--primary)" />
+      <line x1="14" y1="1" x2="14" y2="7" stroke="var(--primary)" strokeWidth="2" />
+      <line x1="14" y1="21" x2="14" y2="27" stroke="var(--primary)" strokeWidth="2" />
+      <line x1="1" y1="14" x2="7" y2="14" stroke="var(--primary)" strokeWidth="2" />
+      <line x1="21" y1="14" x2="27" y2="14" stroke="var(--primary)" strokeWidth="2" />
     </svg>
   );
 }
@@ -580,7 +580,7 @@ function ExploreLink({
 
   return (
     <div
-      className="relative z-50 h-full border-cyan-500/10"
+      className="relative z-50 h-full border-white/[0.06]"
       ref={dropdownRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -625,7 +625,7 @@ function ExploreLink({
       <AnimatePresence>
         {isDropdownOpen && (
           <motion.div
-            className="fixed left-0 top-20 z-40 w-screen max-w-none overflow-hidden border-b border-cyan-400/10 bg-[#00060a]/100 backdrop-blur-xl"
+            className="fixed left-0 top-20 z-40 w-screen max-w-none overflow-hidden border-b border-white/[0.06] bg-black backdrop-blur-xl"
             style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.45)" }}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -834,16 +834,14 @@ export function InteractiveNavbar() {
   return (
     <nav
       /* Glass: blue-black base /70, lighter /50 when blur active so aurora shows through */
-      className="relative w-full border-b border-cyan-400/10 bg-[#010508]/70 supports-[backdrop-filter]:bg-[#000000]/100 text-white backdrop-blur-sm transition-colors duration-300"
-      style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.25)" }}
+      className="relative w-full border-b border-white/[0.06] bg-black/80 supports-[backdrop-filter]:bg-black/95 text-white backdrop-blur-sm transition-colors duration-300"
+      style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.35)" }}
       role="navigation"
       aria-label="Main navigation"
     >
-      {/* Subtle cyan film for blue-black tint */}
-      <div className="pointer-events-none absolute inset-0 bg-cyan-400/5" aria-hidden="true" />
       <div className="relative grid h-20 grid-cols-[1fr_auto] items-center md:grid-cols-[auto_auto_1fr_auto]">
         {/* Brand */}
-        <div className="flex h-full items-center border-r border-cyan-500/10 px-4 md:px-10">
+        <div className="flex h-full items-center border-r border-white/[0.06] px-4 md:px-10">
           <Link
             href="/"
             className="flex items-center"
@@ -868,7 +866,7 @@ export function InteractiveNavbar() {
         </div>
 
         {/* EXPLORE dropdown — desktop */}
-        <div className="hidden h-full border-r border-cyan-500/10 md:block">
+        <div className="hidden h-full border-r border-white/[0.06] md:block">
           <ExploreLink onDropdownChange={setIsNavDropdownOpen} />
         </div>
 
@@ -883,12 +881,15 @@ export function InteractiveNavbar() {
 
         {/* Theme toggle — desktop */}
         {/* Sign Up — desktop */}
-        <div className="hidden h-full items-center border-l border-cyan-500/10 px-4 gap-4 md:flex">
+        <div className="hidden h-full items-center border-l border-white/[0.06] px-4 gap-4 md:flex">
           <ThemeToggle />
           <Link
             href="/signup"
-            className="rounded-full bg-cyan-500/90 px-6 py-2 text-xs font-semibold tracking-wider text-black transition-all duration-300 hover:bg-cyan-400"
-            style={{ boxShadow: "0 0 15px rgba(34,211,238,0.3)" }}
+            className="rounded-full px-6 py-2 text-xs font-semibold tracking-wider text-white transition-all duration-300"
+            style={{
+              backgroundColor: "var(--btn-primary-bg)",
+              boxShadow: "0 0 15px var(--btn-primary-hover-shadow)",
+            }}
           >
             SIGN UP
           </Link>
@@ -899,7 +900,7 @@ export function InteractiveNavbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed left-0 right-0 top-20 z-50 max-h-[calc(100vh-5rem)] overflow-hidden border-t border-cyan-500/10 bg-[#0F1720]/90 backdrop-blur-xl md:hidden"
+            className="fixed left-0 right-0 top-20 z-50 max-h-[calc(100vh-5rem)] overflow-hidden border-t border-white/[0.06] bg-black/95 backdrop-blur-xl md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -907,10 +908,10 @@ export function InteractiveNavbar() {
           >
             <div className="flex max-h-[calc(100vh-5rem)] flex-col space-y-6 overflow-y-auto px-6 py-4">
               {/* EXPLORE section mobile */}
-              <div className="mt-6 border-b border-cyan-500/10 py-2">
+              <div className="mt-6 border-b border-white/[0.06] py-2">
                 <button
                   onClick={() => setIsNavDropdownOpen(!isNavDropdownOpen)}
-                  className="flex w-full items-center justify-between border-r border-cyan-500/10 py-3"
+                  className="flex w-full items-center justify-between py-3"
                 >
                   <span className="text-sm tracking-wide">EXPLORE</span>
                 </button>
@@ -963,8 +964,11 @@ export function InteractiveNavbar() {
               {/* Sign Up mobile */}
               <Link
                 href="/signup"
-                className="mt-4 inline-block rounded-full bg-cyan-500/90 px-6 py-3 text-center text-sm font-semibold text-black transition-all duration-300 hover:bg-cyan-400"
-                style={{ boxShadow: "0 0 15px rgba(34,211,238,0.3)" }}
+                className="mt-4 inline-block rounded-full px-6 py-3 text-center text-sm font-semibold text-white transition-all duration-300"
+                style={{
+                  backgroundColor: "var(--btn-primary-bg)",
+                  boxShadow: "0 0 15px var(--btn-primary-hover-shadow)",
+                }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 SIGN UP

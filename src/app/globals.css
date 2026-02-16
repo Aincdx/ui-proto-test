@@ -2,112 +2,118 @@
 
 /* ═══════════════════════════════════════════════════════════════
    LIGHT MODE (default)
+   Engineering-grade palette: academic + AI + professional CAD/sim
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  --primary: #3BA3D9;
-  --primary-dark: #2E8BC0;
-  --primary-light: #E8F4FD;
-  --primary-glow: rgba(59, 163, 217, 0.12);
-  --hero-gradient-start: #E3F2FD;
-  --hero-gradient-end: #F8FCFF;
-  --text-dark: #1A1A2E;
-  --text-body: #475569;
-  --text-muted: #64748B;
-  --text-nav: #4A5568;
-  --border-card: #B8DCF0;
-  --border-light: #E2E8F0;
-  --bg-base: #FFFFFF;
-  --bg-elevated: #F7FAFC;
+  --primary: #2A7AB4;
+  --primary-dark: #1E6694;
+  --primary-light: #E3EEF6;
+  --primary-glow: rgba(42, 122, 180, 0.10);
+  --hero-gradient-start: #EDF1F5;
+  --hero-gradient-end: #F7F9FB;
+  --text-dark: #0F1B2D;
+  --text-body: #3D4F63;
+  --text-muted: #5A6B7D;
+  --text-nav: #3D4F63;
+  --border-card: #C2D1DE;
+  --border-light: #DAE2EB;
+  --bg-base: #F8FAFB;
+  --bg-elevated: #EFF3F7;
   --bg-surface: #FFFFFF;
-  --bg-surface-hover: #F7FAFC;
-  --bg-overlay: rgba(0, 0, 0, 0.05);
+  --bg-surface-hover: #F2F5F8;
+  --bg-overlay: rgba(0, 0, 0, 0.04);
+  /* Secondary cool accent — for micro-details & emphasis */
+  --accent-secondary: #5C7C99;
   /* Hero protoboard card */
-  --proto-card-bg: #EDF5FB;
-  --proto-card-shadow: rgba(59, 163, 217, 0.12);
-  --proto-board-fill: #D6EEFB;
-  --proto-board-stroke: #3BA3D9;
-  --proto-chip-fill: #1A1A2E;
-  --proto-pin-fill: #4A5568;
-  --proto-wire-red: #E53E3E;
-  --proto-led-outer: #48BB78;
-  --proto-led-inner: #68D391;
+  --proto-card-bg: #E8EFF5;
+  --proto-card-shadow: rgba(42, 122, 180, 0.10);
+  --proto-board-fill: #D2DFEA;
+  --proto-board-stroke: #2A7AB4;
+  --proto-chip-fill: #0F1B2D;
+  --proto-pin-fill: #3D4F63;
+  --proto-wire-red: #D63031;
+  --proto-led-outer: #2D9C5A;
+  --proto-led-inner: #4DB87A;
   --proto-label-bg: #FFFFFF;
-  --proto-label-text: #4A5568;
+  --proto-label-text: #3D4F63;
   /* Buttons */
-  --btn-primary-bg: #2E8BC0;
-  --btn-primary-hover-shadow: rgba(46, 139, 192, 0.35);
-  --btn-ghost-bg: rgba(255, 255, 255, 0.7);
-  --btn-ghost-border: #B8DCF0;
-  --btn-ghost-text: #2E8BC0;
+  --btn-primary-bg: #1E6694;
+  --btn-primary-hover-shadow: rgba(30, 102, 148, 0.30);
+  --btn-ghost-bg: rgba(247, 249, 251, 0.8);
+  --btn-ghost-border: #B5C7D6;
+  --btn-ghost-text: #1E6694;
   /* Eyebrow */
-  --eyebrow-text: #2E8BC0;
-  --eyebrow-border: #B8DCF0;
-  --eyebrow-bg: rgba(59, 163, 217, 0.06);
+  --eyebrow-text: #2A7AB4;
+  --eyebrow-border: #B5C7D6;
+  --eyebrow-bg: rgba(42, 122, 180, 0.05);
   /* Trust dots border */
-  --trust-dot-border: #FFFFFF;
+  --trust-dot-border: #F8FAFB;
   /* Accent word */
-  --accent-word: #2E8BC0;
-  --accent-underline: #3BA3D9;
+  --accent-word: #1E6694;
+  --accent-underline: #2A7AB4;
   /* Aurora */
-  --aurora-bg: #f4f4f5;
-  --aurora-white-gradient: repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%);
+  --aurora-bg: #F0F2F5;
+  --aurora-white-gradient: repeating-linear-gradient(100deg,#F8FAFB 0%,#F8FAFB 7%,transparent 10%,transparent 12%,#F8FAFB 16%);
   --aurora-invert: invert(1);
-  --aurora-mask-opacity: 0.50;
+  --aurora-mask-opacity: 0.40;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    DARK MODE
+   Engineering-grade palette: academic + AI + professional CAD/sim
    ═══════════════════════════════════════════════════════════════ */
 .dark {
-  --primary: #4DB8E8;
-  --primary-dark: #3BA3D9;
-  --primary-light: #0D2847;
-  --primary-glow: rgba(77, 184, 232, 0.15);
-  --hero-gradient-start: #060C18;
-  --hero-gradient-end: #050A14;
-  --text-dark: #F1F5F9;
-  --text-body: #94A3B8;
-  --text-muted: #64748B;
-  --text-nav: #CBD5E1;
-  --border-card: #162A45;
-  --border-light: #111E32;
-  --bg-base: #050A14;
-  --bg-elevated: #080E1C;
-  --bg-surface: #0C1628;
-  --bg-surface-hover: #111E32;
+  --primary: #3A9BCC;
+  --primary-dark: #2A7AB4;
+  --primary-light: #0C1E33;
+  --primary-glow: rgba(58, 155, 204, 0.12);
+  --hero-gradient-start: #050B15;
+  --hero-gradient-end: #040810;
+  --text-dark: #E4EAF0;
+  --text-body: #8A9BB0;
+  --text-muted: #5A6B7D;
+  --text-nav: #B8C7D6;
+  --border-card: #152435;
+  --border-light: #0F1C2C;
+  --bg-base: #040810;
+  --bg-elevated: #070D19;
+  --bg-surface: #0B1524;
+  --bg-surface-hover: #0F1C2C;
   --bg-overlay: rgba(255, 255, 255, 0.03);
+  /* Secondary cool accent */
+  --accent-secondary: #6B8DAA;
   /* Hero protoboard card */
-  --proto-card-bg: #080E1C;
-  --proto-card-shadow: rgba(77, 184, 232, 0.08);
-  --proto-board-fill: #0C1628;
-  --proto-board-stroke: #162A45;
-  --proto-chip-fill: #050A14;
-  --proto-pin-fill: #64748B;
+  --proto-card-bg: #070D19;
+  --proto-card-shadow: rgba(58, 155, 204, 0.08);
+  --proto-board-fill: #0B1524;
+  --proto-board-stroke: #152435;
+  --proto-chip-fill: #040810;
+  --proto-pin-fill: #5A6B7D;
   --proto-wire-red: #F87171;
   --proto-led-outer: #4ADE80;
   --proto-led-inner: #86EFAC;
-  --proto-label-bg: #0C1628;
-  --proto-label-text: #94A3B8;
+  --proto-label-bg: #0B1524;
+  --proto-label-text: #8A9BB0;
   /* Buttons */
-  --btn-primary-bg: #3BA3D9;
-  --btn-primary-hover-shadow: rgba(77, 184, 232, 0.30);
-  --btn-ghost-bg: rgba(255, 255, 255, 0.06);
-  --btn-ghost-border: #162A45;
-  --btn-ghost-text: #4DB8E8;
+  --btn-primary-bg: #2A7AB4;
+  --btn-primary-hover-shadow: rgba(58, 155, 204, 0.25);
+  --btn-ghost-bg: rgba(255, 255, 255, 0.04);
+  --btn-ghost-border: #152435;
+  --btn-ghost-text: #3A9BCC;
   /* Eyebrow */
-  --eyebrow-text: #4DB8E8;
-  --eyebrow-border: #162A45;
-  --eyebrow-bg: rgba(77, 184, 232, 0.08);
+  --eyebrow-text: #3A9BCC;
+  --eyebrow-border: #152435;
+  --eyebrow-bg: rgba(58, 155, 204, 0.06);
   /* Trust dots border */
-  --trust-dot-border: #080E1C;
+  --trust-dot-border: #070D19;
   /* Accent word */
-  --accent-word: #4DB8E8;
-  --accent-underline: #4DB8E8;
+  --accent-word: #3A9BCC;
+  --accent-underline: #3A9BCC;
   /* Aurora */
-  --aurora-bg: #050A14;
-  --aurora-white-gradient: repeating-linear-gradient(100deg,#050A14 0%,#050A14 7%,transparent 10%,transparent 12%,#050A14 16%);
+  --aurora-bg: #040810;
+  --aurora-white-gradient: repeating-linear-gradient(100deg,#040810 0%,#040810 7%,transparent 10%,transparent 12%,#040810 16%);
   --aurora-invert: invert(0);
-  --aurora-mask-opacity: 0.30;
+  --aurora-mask-opacity: 0.25;
 }
 
 @theme inline {

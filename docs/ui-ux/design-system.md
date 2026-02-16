@@ -1,7 +1,7 @@
 # Design System — PROTOBOARD Landing Page
 
-> Pixel-perfect reference from provided screenshot.
-> Generated following WUmax (ui-ux-pro-max) methodology.
+> Engineering-grade palette: Academic rigor + AI intelligence + Professional simulation software.
+> Generated and maintained following WUmax (ui-ux-pro-max) methodology.
 
 ---
 
@@ -9,28 +9,34 @@
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│ NAVBAR (white bg, ~80px height)                     │
-│  Logo left │ Links center-right │ CTA pill right    │
+│ INTERACTIVE NAVBAR (glass dark, 80px, fixed top)    │
+│  Logo + Brand │ EXPLORE dropdown │ Nav │ Actions    │
 ├─────────────────────────────────────────────────────┤
-│ HERO (light blue radial gradient bg)                │
-│  ┌─────────────┬─────────────────────┐              │
-│  │ Text block  │  Hero illustration  │              │
-│  │ H1 2 lines  │  (placeholder)      │              │
-│  │ Subtitle    │                     │              │
-│  │ 2 buttons   │                     │              │
-│  └─────────────┴─────────────────────┘              │
+│ HERO (aurora bg left, blueprint grid right)         │
+│  ┌──────────────┬──────────────────┐                │
+│  │ Text block   │  3D GLB model    │                │
+│  │ Eyebrow      │  (interactive,   │                │
+│  │ H1 2 lines   │   auto-rotate)   │                │
+│  │ Subtitle     │                  │                │
+│  │ Trust dots   │                  │                │
+│  │ 2 CTAs       │                  │                │
+│  └──────────────┴──────────────────┘                │
 ├─────────────────────────────────────────────────────┤
-│ HOW IT WORKS (white/very light gray bg)             │
-│  Title centered                                     │
-│  ┌─────┐  ┌─────┐  ┌─────┐                         │
-│  │Card1│  │Card2│  │Card3│  (3-col grid)            │
-│  └─────┘  └─────┘  └─────┘                         │
+│ HOW IT WORKS (elevated bg, 3 cards)                 │
+├─── Section bridge ──────────────────────────────────┤
+│ PROMPT TO HARDWARE (code terminal mockup)           │
+├─── Section bridge ──────────────────────────────────┤
+│ CIRCUIT SANDBOX (interactive sandbox preview)       │
+├─── Section bridge ──────────────────────────────────┤
+│ WHY DIFFERENT (comparison cards)                    │
+├─── Section bridge ──────────────────────────────────┤
+│ CALL TO ACTION (closing CTA with benefits)          │
 └─────────────────────────────────────────────────────┘
 ```
 
-- **Flow:** Navbar → Hero → How It Works
-- **CTA placement:** Hero (above fold), Navbar (Sign Up)
-- **Visual weight:** Left text / Right image in hero
+- **Flow:** Navbar → Hero → How It Works → Prompt To Hardware → Circuit Sandbox → Why Different → Call To Action
+- **CTA placement:** Hero (above fold), Navbar (Sign Up), CTA section (closing)
+- **Visual weight:** Left text / Right 3D model in hero. 48/52 split.
 
 ---
 
@@ -38,118 +44,172 @@
 
 | Token | px Value | Tailwind | Usage |
 |-------|----------|----------|-------|
-| `container-max` | 1200px | `max-w-[1200px]` | Main content max width |
-| `container-pad` | 48px | `px-12` | Horizontal page padding |
-| `navbar-h` | 80px | `h-[80px]` | Navbar height |
-| `hero-py` | 80px top / 100px bottom | `pt-[80px] pb-[100px]` | Hero vertical padding |
+| `container-max` | 1440px | `max-w-[1440px]` | Main content max width (xl) |
+| `container-max-2xl` | 1500px | `max-w-[1500px]` | Wide screens |
+| `container-pad` | 48px / 40px | `px-12` / `xl:px-10` | Horizontal page padding |
+| `navbar-h` | 80px | `h-20` | Navbar height |
+| `hero-pt` | 140px / 120px | `pt-[140px]` / `xl:pt-[120px]` | Hero top padding |
+| `hero-pb` | 80px / 60px | `pb-[80px]` / `xl:pb-[60px]` | Hero bottom padding |
 | `section-py` | 64px | `py-16` | Section vertical padding |
 | `card-pad` | 32px | `p-8` | Card inner padding |
 | `card-gap` | 32px | `gap-8` | Gap between cards |
-| `hero-gap` | 48px | `gap-12` | Gap between hero columns |
-| `btn-px` | 28px | `px-7` | Button horizontal padding |
-| `btn-py` | 12px | `py-3` | Button vertical padding |
-| `btn-gap` | 16px | `gap-4` | Gap between hero buttons |
-| `space-xs` | 8px | `2` | Smallest spacing |
-| `space-sm` | 12px | `3` | Small spacing |
-| `space-md` | 16px | `4` | Medium spacing |
-| `space-lg` | 24px | `6` | Large spacing |
+| `hero-gap` | 40-64px | `gap-10` / `xl:gap-16` | Gap between hero columns |
+| `btn-px` | 28-40px | `px-7` / `xl:px-9` / `2xl:px-10` | Button horizontal padding |
+| `btn-py` | 14-18px | `py-3.5` / `xl:py-4` / `2xl:py-[18px]` | Button vertical padding |
+
+**Spacing scale:** 4px multiples — `4, 8, 12, 16, 24, 32, 48, 64`.
 
 ---
 
-## 3. Color Tokens
+## 3. Color Tokens — Engineering Grade
+
+### Palette Philosophy
+- **Primary:** Deep, desaturated blue — evokes CAD tools, lab software, simulation environments
+- **Secondary accent:** Cool steel-blue — for micro-details and technical hierarchy
+- **Typography:** Cool navy tones — high authority without visual heaviness
+- **Backgrounds:** Faint cool undertone — controlled technical workspace feel
+- **Grid:** Blueprint-adjacent — reinforces engineering environment
+
+### Light Mode
 
 | Token | HEX | Usage |
 |-------|-----|-------|
-| `primary` | `#3BA3D9` | Buttons, logo, accents, card borders |
-| `primary-dark` | `#2E8BC0` | Button hover states |
-| `primary-light` | `#E8F4FD` | Hero gradient start tint |
-| `hero-gradient-start` | `#E3F2FD` | Hero background gradient (center) |
-| `hero-gradient-end` | `#F8FCFF` | Hero background gradient (edges) |
-| `white` | `#FFFFFF` | Navbar bg, card bg, section bg |
-| `bg-light` | `#F7FAFC` | How It Works section bg |
-| `text-dark` | `#1A1A2E` | H1, card titles, strong text |
-| `text-body` | `#6B7280` | Subtitles, body text |
-| `text-nav` | `#4A5568` | Navbar links |
-| `border-card` | `#B8DCF0` | Card border color |
-| `border-light` | `#E2E8F0` | Subtle dividers |
+| `--primary` | `#2A7AB4` | Buttons, logo, accents, card borders |
+| `--primary-dark` | `#1E6694` | CTA bg, accent word, deeper emphasis |
+| `--primary-light` | `#E3EEF6` | Light tint backgrounds |
+| `--primary-glow` | `rgba(42,122,180,0.10)` | Subtle radial glows |
+| `--accent-secondary` | `#5C7C99` | Micro-details, technical annotations |
+| `--text-dark` | `#0F1B2D` | Headlines, strong text (cool navy) |
+| `--text-body` | `#3D4F63` | Body copy, subtitles |
+| `--text-muted` | `#5A6B7D` | Captions, meta text |
+| `--text-nav` | `#3D4F63` | Navigation links |
+| `--bg-base` | `#F8FAFB` | Page background (cool tint) |
+| `--bg-elevated` | `#EFF3F7` | Elevated sections |
+| `--bg-surface` | `#FFFFFF` | Content surfaces, cards |
+| `--bg-surface-hover` | `#F2F5F8` | Hover states |
+| `--border-card` | `#C2D1DE` | Card borders (cool steel) |
+| `--border-light` | `#DAE2EB` | Subtle dividers |
+| `--btn-primary-bg` | `#1E6694` | Primary CTA background |
+| `--btn-ghost-text` | `#1E6694` | Ghost button text |
+| `--btn-ghost-border` | `#B5C7D6` | Ghost button border |
+| `--accent-word` | `#1E6694` | Headline accent word |
+| `--accent-underline` | `#2A7AB4` | Underline decoration |
+
+### Dark Mode
+
+| Token | HEX | Usage |
+|-------|-----|-------|
+| `--primary` | `#3A9BCC` | Primary interaction color |
+| `--primary-dark` | `#2A7AB4` | Deeper emphasis |
+| `--accent-secondary` | `#6B8DAA` | Technical micro-details |
+| `--text-dark` | `#E4EAF0` | Headlines (cool white) |
+| `--text-body` | `#8A9BB0` | Body copy (steel) |
+| `--text-muted` | `#5A6B7D` | Captions |
+| `--bg-base` | `#040810` | Page background (deep navy) |
+| `--bg-elevated` | `#070D19` | Elevated sections |
+| `--bg-surface` | `#0B1524` | Content surfaces |
+| `--border-card` | `#152435` | Card borders |
+| `--btn-primary-bg` | `#2A7AB4` | Primary CTA background |
+| `--accent-word` | `#3A9BCC` | Headline accent word |
+
+### Contrast Verification (WCAG AA ≥ 4.5:1)
+
+| Pair | Contrast | Pass? |
+|------|----------|-------|
+| `--text-dark` (#0F1B2D) on `--bg-base` (#F8FAFB) | ~15.8:1 | ✅ AAA |
+| `--text-body` (#3D4F63) on `--bg-base` (#F8FAFB) | ~7.4:1 | ✅ AAA |
+| `--text-muted` (#5A6B7D) on `--bg-base` (#F8FAFB) | ~5.1:1 | ✅ AA |
+| `--text-dark` (#E4EAF0) on `--bg-base` (#040810) | ~16.2:1 | ✅ AAA |
+| `--text-body` (#8A9BB0) on `--bg-base` (#040810) | ~6.2:1 | ✅ AA |
+| White on `--btn-primary-bg` (#1E6694) | ~5.9:1 | ✅ AA |
 
 ---
 
 ## 4. Typography Tokens
 
-| Element | Family | Weight | Size | Line-Height | Color |
-|---------|--------|--------|------|-------------|-------|
-| Logo | Inter | 700 (bold) | 20px | 1.2 | `#3BA3D9` |
-| Nav link | Inter | 500 (medium) | 15px | 1.5 | `#4A5568` |
-| Nav CTA | Inter | 600 (semibold) | 14px | 1.2 | `#FFFFFF` |
-| H1 Hero | Inter | 800 (extrabold) | 44px | 1.15 | `#1A1A2E` |
-| Subtitle | Inter | 400 (regular) | 16px | 1.6 | `#6B7280` |
-| Section title | Inter | 700 (bold) | 32px | 1.3 | `#1A1A2E` |
-| Card title | Inter | 700 (bold) | 18px | 1.3 | `#1A1A2E` |
-| Card desc | Inter | 400 (regular) | 14px | 1.5 | `#6B7280` |
-| Button primary | Inter | 600 (semibold) | 15px | 1.2 | `#FFFFFF` |
-| Button outline | Inter | 600 (semibold) | 15px | 1.2 | `#3BA3D9` |
+| Element | Family | Weight | Size | Line-Height | Color Token |
+|---------|--------|--------|------|-------------|-------------|
+| Logo | Space Grotesk | 700 | 20px | 1.2 | `--primary` |
+| Nav link | IBM Plex Sans | 500 | 15px | 1.5 | `--text-nav` |
+| Nav CTA | IBM Plex Sans | 600 | 14px | 1.2 | white |
+| H1 line 1 | Space Grotesk | 600 | 58px (xl) | 1.06 | `--text-dark` |
+| H1 accent word | Space Grotesk | 800 | 72px (xl) | 1.05 | `--accent-word` |
+| Eyebrow | IBM Plex Sans | 600 | 12px | 1.5 | `--eyebrow-text` |
+| Subtitle | IBM Plex Sans | 400 | 18px (xl) | 1.7 | `--text-body` |
+| Section title | Space Grotesk | 700 | 32px | 1.3 | `--text-dark` |
+| Card title | Space Grotesk | 700 | 18px | 1.3 | `--text-dark` |
+| Card desc | IBM Plex Sans | 400 | 14px | 1.5 | `--text-body` |
+| Button primary | IBM Plex Sans | 600 | 15-17px | 1.2 | white |
+| Button ghost | IBM Plex Sans | 500 | 15-17px | 1.2 | `--btn-ghost-text` |
 
-**Font import:** Inter via `next/font/google`
-
----
-
-## 5. Component Specs
-
-### 5.1 Navbar
-- Height: 80px
-- Background: white (`#FFFFFF`)
-- Bottom border: 1px `#E2E8F0` (very subtle)
-- **Left:** Logo icon (SVG placeholder, ~24px) + "PROTOBOARD" text
-- **Center-right:** Links separated by `/` dividers: Home / About / How It Works / Contact
-- **Right:** "Sign Up" pill button (bg `#3BA3D9`, text white, border-radius full `rounded-full`, px-6 py-2)
-- Logo text: uppercase, bold, letter-spacing `tracking-wider`
-
-### 5.2 Hero Buttons
-- **Primary ("Start Building"):** `bg-[#3BA3D9]` text-white, `rounded-full`, px-7 py-3, font-semibold
-- **Secondary ("Learn More"):** border-2 `border-[#3BA3D9]` text `#3BA3D9`, bg transparent, `rounded-full`, px-7 py-3, font-semibold
-- Hover: opacity 90% (primary), bg `#E8F4FD` (secondary)
-
-### 5.3 How It Works Cards
-- Background: white
-- Border: 2px solid `#B8DCF0`
-- Border-radius: 16px (`rounded-2xl`)
-- Padding: 32px
-- Min-height: ~220px
-- Icon: centered at top, ~48px, color `#3BA3D9`
-- Title: centered, bold, 18px
-- Description: centered, regular, 14px, gray
-- Third card has slight variation: border `#D1D5DB` (light gray instead of blue) based on screenshot
+**Font stack:**
+- Display: `Space Grotesk` via `next/font/google` → `--font-display`
+- Body: `IBM Plex Sans` via `next/font/google` → `--font-body`
 
 ---
 
-## 6. Anti-patterns (DO NOT)
+## 5. Aurora Palettes
 
-- Do NOT use shadcn or any component library
-- Do NOT change the copy text from the screenshot
-- Do NOT add animations or transitions beyond simple hover
-- Do NOT use dark mode
-- Do NOT use gradients other than the specified hero gradient
-- Do NOT add heavy box-shadows (keep shadows very subtle)
-- Do NOT use emojis as icons
-- Do NOT change the card border style or radius
-- Do NOT invent new sections not in the screenshot
+| Preset | Mood | Colors |
+|--------|------|--------|
+| `engineeringBlue` | Desaturated, authoritative | `#7BB5D0 #5C8DAD #8CAFC5 #A5C3D6 #6B9DB8` |
+| `steelSlate` | Cold, instrument-panel | `#8A9FB5 #6E8A9E #9BB2C4 #7C96AB #A3B8C8` |
+| `labNeutral` | Minimal, academic | `#94A8B8 #7A92A5 #A8BCC9 #8DA1B2 #B0C2CF` |
 
 ---
 
-## 7. Pixel-Match Checklist
+## 6. Grid / Technical Zone
 
-- [ ] Navbar height exactly ~80px with white background
-- [ ] Logo "PROTOBOARD" with icon, uppercase, blue color
-- [ ] Nav links with "/" separator, proper spacing
-- [ ] "Sign Up" button pill style, blue bg, white text
-- [ ] Hero gradient: radial blue tint, center-biased, fading to near-white
-- [ ] Hero H1: "Build Intelligent / Circuits with AI" — 2 lines, extrabold
-- [ ] Hero subtitle: 1 line, gray, correct copy
-- [ ] Two pill buttons aligned left in hero
-- [ ] Hero placeholder image: rounded, shadow, right-aligned
-- [ ] "How It Works" section: white bg, centered title
-- [ ] 3 cards in grid, blue borders, rounded-2xl
-- [ ] Card icons centered, titles centered, descriptions centered
-- [ ] Desktop 1440px viewport looks identical to screenshot
-- [ ] Content contained within ~1200px centered container
+- Blueprint-style infinite grid, scoped to right 48%→100% of hero
+- `cellSize`: 36px (tighter than default for technical density)
+- `baseOpacity`: 0.07 (subtle but intentional)
+- `revealOpacity`: 0.35 (mouse-reveal spotlight)
+- `revealRadius`: 280px
+- Feather mask: CSS `mask-image` gradient, transparent→40%→solid transition
+- Color: inherits from `text-muted-foreground` (cool gray)
+
+---
+
+## 7. Emotional Calibration
+
+### ✅ The palette SHOULD evoke:
+- Precision
+- Reliability
+- Academic credibility
+- AI intelligence
+- Advanced simulation tools (Proteus, LTspice, MATLAB)
+- Professional engineering software
+
+### ❌ The palette should NOT evoke:
+- Startup marketing SaaS
+- Fintech branding
+- Social media product
+- Playful AI tool
+- Neon/futuristic aesthetic
+
+---
+
+## 8. Anti-patterns (DO NOT)
+
+- Do NOT use bright/startup-blue (`#3BA3D9` or similar) — replaced with engineering `#2A7AB4`
+- Do NOT use warm grays — all grays must have cool blue undertone
+- Do NOT use neon or high-saturation accents
+- Do NOT add playful gradients (AI purple/pink/rainbow)
+- Do NOT use emojis as icons — SVG only (Lucide / Heroicons / custom)
+- Do NOT use warm tones for accents or highlights
+- Do NOT reduce grid intentionality — the grid is blueprint, not decoration
+
+---
+
+## 9. Pre-delivery Checklist
+
+- [x] All text passes WCAG AA contrast (≥ 4.5:1)
+- [x] Focus states visible on all interactive elements
+- [x] `prefers-reduced-motion` respected (globals.css)
+- [x] No warm grays anywhere in the system
+- [x] Primary blue reads as "engineering tool" not "SaaS signup"
+- [x] CTA buttons feel decisive, not playful
+- [x] Grid reinforces technical environment
+- [x] Background has controlled cool workspace feel
+- [x] All hardcoded colors use CSS custom properties
+- [x] Dark mode maintains same engineering authority
