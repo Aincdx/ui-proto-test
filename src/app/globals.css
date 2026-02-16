@@ -1,23 +1,119 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE (default)
+   ═══════════════════════════════════════════════════════════════ */
 :root {
   --primary: #3BA3D9;
   --primary-dark: #2E8BC0;
   --primary-light: #E8F4FD;
+  --primary-glow: rgba(59, 163, 217, 0.12);
   --hero-gradient-start: #E3F2FD;
   --hero-gradient-end: #F8FCFF;
   --text-dark: #1A1A2E;
-  --text-body: #6B7280;
+  --text-body: #475569;
+  --text-muted: #64748B;
   --text-nav: #4A5568;
   --border-card: #B8DCF0;
   --border-light: #E2E8F0;
-  --bg-light: #F7FAFC;
+  --bg-base: #FFFFFF;
+  --bg-elevated: #F7FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F7FAFC;
+  --bg-overlay: rgba(0, 0, 0, 0.05);
+  /* Hero protoboard card */
+  --proto-card-bg: #EDF5FB;
+  --proto-card-shadow: rgba(59, 163, 217, 0.12);
+  --proto-board-fill: #D6EEFB;
+  --proto-board-stroke: #3BA3D9;
+  --proto-chip-fill: #1A1A2E;
+  --proto-pin-fill: #4A5568;
+  --proto-wire-red: #E53E3E;
+  --proto-led-outer: #48BB78;
+  --proto-led-inner: #68D391;
+  --proto-label-bg: #FFFFFF;
+  --proto-label-text: #4A5568;
+  /* Buttons */
+  --btn-primary-bg: #2E8BC0;
+  --btn-primary-hover-shadow: rgba(46, 139, 192, 0.35);
+  --btn-ghost-bg: rgba(255, 255, 255, 0.7);
+  --btn-ghost-border: #B8DCF0;
+  --btn-ghost-text: #2E8BC0;
+  /* Eyebrow */
+  --eyebrow-text: #2E8BC0;
+  --eyebrow-border: #B8DCF0;
+  --eyebrow-bg: rgba(59, 163, 217, 0.06);
+  /* Trust dots border */
+  --trust-dot-border: #FFFFFF;
+  /* Accent word */
+  --accent-word: #2E8BC0;
+  --accent-underline: #3BA3D9;
+  /* Aurora */
+  --aurora-bg: #f4f4f5;
+  --aurora-white-gradient: repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%);
+  --aurora-invert: invert(1);
+  --aurora-mask-opacity: 0.50;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE
+   ═══════════════════════════════════════════════════════════════ */
+.dark {
+  --primary: #4DB8E8;
+  --primary-dark: #3BA3D9;
+  --primary-light: #0D2847;
+  --primary-glow: rgba(77, 184, 232, 0.15);
+  --hero-gradient-start: #0B1628;
+  --hero-gradient-end: #0B1120;
+  --text-dark: #F1F5F9;
+  --text-body: #94A3B8;
+  --text-muted: #64748B;
+  --text-nav: #CBD5E1;
+  --border-card: #1E3A5F;
+  --border-light: #1A2740;
+  --bg-base: #0B1120;
+  --bg-elevated: #0F1A2E;
+  --bg-surface: #152238;
+  --bg-surface-hover: #1B2D4A;
+  --bg-overlay: rgba(255, 255, 255, 0.04);
+  /* Hero protoboard card */
+  --proto-card-bg: #0F1A2E;
+  --proto-card-shadow: rgba(77, 184, 232, 0.08);
+  --proto-board-fill: #152238;
+  --proto-board-stroke: #1E3A5F;
+  --proto-chip-fill: #0B1120;
+  --proto-pin-fill: #64748B;
+  --proto-wire-red: #F87171;
+  --proto-led-outer: #4ADE80;
+  --proto-led-inner: #86EFAC;
+  --proto-label-bg: #152238;
+  --proto-label-text: #94A3B8;
+  /* Buttons */
+  --btn-primary-bg: #3BA3D9;
+  --btn-primary-hover-shadow: rgba(77, 184, 232, 0.30);
+  --btn-ghost-bg: rgba(255, 255, 255, 0.06);
+  --btn-ghost-border: #1E3A5F;
+  --btn-ghost-text: #4DB8E8;
+  /* Eyebrow */
+  --eyebrow-text: #4DB8E8;
+  --eyebrow-border: #1E3A5F;
+  --eyebrow-bg: rgba(77, 184, 232, 0.08);
+  /* Trust dots border */
+  --trust-dot-border: #0F1A2E;
+  /* Accent word */
+  --accent-word: #4DB8E8;
+  --accent-underline: #4DB8E8;
+  /* Aurora */
+  --aurora-bg: #0B1120;
+  --aurora-white-gradient: repeating-linear-gradient(100deg,#0B1120 0%,#0B1120 7%,transparent 10%,transparent 12%,#0B1120 16%);
+  --aurora-invert: invert(0);
+  --aurora-mask-opacity: 0.30;
 }
 
 @theme inline {
-  --color-background: #ffffff;
+  --color-background: var(--bg-base);
   --color-foreground: var(--text-dark);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-body);
   --animate-aurora: aurora 60s linear infinite;
 
   @keyframes aurora {
@@ -35,11 +131,12 @@
 }
 
 body {
-  background: #ffffff;
+  background: var(--bg-base);
   color: var(--text-dark);
-  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

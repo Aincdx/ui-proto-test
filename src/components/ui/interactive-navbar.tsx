@@ -4,6 +4,7 @@ import { ReactNode, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { MeshReflectorMaterial, RoundedBox, Html } from "@react-three/drei";
 import { Group, Mesh, Vector3, Color } from "three";
@@ -445,7 +446,7 @@ function NavbarItem({ item }: { item: NavItem }) {
   return (
     <Link
       href={item.href}
-      className="relative whitespace-nowrap py-2 text-xs font-medium tracking-wider text-white/70 transition-colors hover:text-white/100"
+      className="relative whitespace-nowrap py-2 text-xs font-medium tracking-wider text-white/70 transition-colors duration-300 hover:text-cyan-400"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -579,7 +580,7 @@ function ExploreLink({
 
   return (
     <div
-      className="relative z-50 h-full border-neutral-800"
+      className="relative z-50 h-full border-cyan-500/10"
       ref={dropdownRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -624,7 +625,8 @@ function ExploreLink({
       <AnimatePresence>
         {isDropdownOpen && (
           <motion.div
-            className="fixed left-0 top-20 z-50 w-full overflow-hidden border-b border-neutral-800 bg-black"
+            className="fixed left-0 top-20 z-40 w-screen max-w-none overflow-hidden border-b border-cyan-400/10 bg-[#00060a]/100 backdrop-blur-xl"
+            style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.45)" }}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -681,7 +683,7 @@ function ExploreDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="h-full overflow-auto">
       <motion.div
-        className="grid h-full grid-cols-1 lg:grid-cols-[minmax(300px,1fr)_2fr]"
+        className="mx-auto min-h-[420px] max-w-[1400px] px-16 py-14 grid grid-cols-1 lg:grid-cols-[minmax(340px,1fr)_2fr] gap-16"
         initial="hidden"
         animate="show"
         variants={{
@@ -831,13 +833,17 @@ export function InteractiveNavbar() {
 
   return (
     <nav
-      className="w-full border border-neutral-800 bg-black text-white"
+      /* Glass: blue-black base /70, lighter /50 when blur active so aurora shows through */
+      className="relative w-full border-b border-cyan-400/10 bg-[#010508]/70 supports-[backdrop-filter]:bg-[#000000]/100 text-white backdrop-blur-sm transition-colors duration-300"
+      style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.25)" }}
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="grid h-20 grid-cols-[1fr_auto] items-center md:grid-cols-[auto_auto_1fr_auto]">
+      {/* Subtle cyan film for blue-black tint */}
+      <div className="pointer-events-none absolute inset-0 bg-cyan-400/5" aria-hidden="true" />
+      <div className="relative grid h-20 grid-cols-[1fr_auto] items-center md:grid-cols-[auto_auto_1fr_auto]">
         {/* Brand */}
-        <div className="flex h-full items-center border-r border-neutral-800 px-4 md:px-10">
+        <div className="flex h-full items-center border-r border-cyan-500/10 px-4 md:px-10">
           <Link
             href="/"
             className="flex items-center"
@@ -862,7 +868,7 @@ export function InteractiveNavbar() {
         </div>
 
         {/* EXPLORE dropdown — desktop */}
-        <div className="hidden h-full border-r border-neutral-800 md:block">
+        <div className="hidden h-full border-r border-cyan-500/10 md:block">
           <ExploreLink onDropdownChange={setIsNavDropdownOpen} />
         </div>
 
@@ -875,11 +881,14 @@ export function InteractiveNavbar() {
           </div>
         </div>
 
+        {/* Theme toggle — desktop */}
         {/* Sign Up — desktop */}
-        <div className="hidden h-full items-center border-l border-neutral-800 px-6 md:flex">
+        <div className="hidden h-full items-center border-l border-cyan-500/10 px-4 gap-4 md:flex">
+          <ThemeToggle />
           <Link
             href="/signup"
-            className="rounded-full bg-[#3BA3D9] px-6 py-2 text-xs font-semibold tracking-wider text-white transition-colors hover:bg-[#2b8dbf]"
+            className="rounded-full bg-cyan-500/90 px-6 py-2 text-xs font-semibold tracking-wider text-black transition-all duration-300 hover:bg-cyan-400"
+            style={{ boxShadow: "0 0 15px rgba(34,211,238,0.3)" }}
           >
             SIGN UP
           </Link>
@@ -890,7 +899,7 @@ export function InteractiveNavbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed left-0 right-0 top-20 z-50 max-h-[calc(100vh-5rem)] overflow-hidden border-t border-neutral-800 bg-black md:hidden"
+            className="fixed left-0 right-0 top-20 z-50 max-h-[calc(100vh-5rem)] overflow-hidden border-t border-cyan-500/10 bg-[#0F1720]/90 backdrop-blur-xl md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -898,10 +907,10 @@ export function InteractiveNavbar() {
           >
             <div className="flex max-h-[calc(100vh-5rem)] flex-col space-y-6 overflow-y-auto px-6 py-4">
               {/* EXPLORE section mobile */}
-              <div className="mt-6 border-b border-neutral-800 py-2">
+              <div className="mt-6 border-b border-cyan-500/10 py-2">
                 <button
                   onClick={() => setIsNavDropdownOpen(!isNavDropdownOpen)}
-                  className="flex w-full items-center justify-between border-r border-neutral-800 py-3"
+                  className="flex w-full items-center justify-between border-r border-cyan-500/10 py-3"
                 >
                   <span className="text-sm tracking-wide">EXPLORE</span>
                 </button>
@@ -945,10 +954,17 @@ export function InteractiveNavbar() {
                 </Link>
               ))}
 
+              {/* Theme toggle mobile */}
+              <div className="flex items-center gap-3 py-2">
+                <span className="text-sm text-white/50">Theme</span>
+                <ThemeToggle />
+              </div>
+
               {/* Sign Up mobile */}
               <Link
                 href="/signup"
-                className="mt-4 inline-block rounded-full bg-[#3BA3D9] px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-[#2b8dbf]"
+                className="mt-4 inline-block rounded-full bg-cyan-500/90 px-6 py-3 text-center text-sm font-semibold text-black transition-all duration-300 hover:bg-cyan-400"
+                style={{ boxShadow: "0 0 15px rgba(34,211,238,0.3)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 SIGN UP
