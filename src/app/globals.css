@@ -63,49 +63,49 @@
   --primary-dark: #3BA3D9;
   --primary-light: #0D2847;
   --primary-glow: rgba(77, 184, 232, 0.15);
-  --hero-gradient-start: #0B1628;
-  --hero-gradient-end: #0B1120;
+  --hero-gradient-start: #060C18;
+  --hero-gradient-end: #050A14;
   --text-dark: #F1F5F9;
   --text-body: #94A3B8;
   --text-muted: #64748B;
   --text-nav: #CBD5E1;
-  --border-card: #1E3A5F;
-  --border-light: #1A2740;
-  --bg-base: #0B1120;
-  --bg-elevated: #0F1A2E;
-  --bg-surface: #152238;
-  --bg-surface-hover: #1B2D4A;
-  --bg-overlay: rgba(255, 255, 255, 0.04);
+  --border-card: #162A45;
+  --border-light: #111E32;
+  --bg-base: #050A14;
+  --bg-elevated: #080E1C;
+  --bg-surface: #0C1628;
+  --bg-surface-hover: #111E32;
+  --bg-overlay: rgba(255, 255, 255, 0.03);
   /* Hero protoboard card */
-  --proto-card-bg: #0F1A2E;
+  --proto-card-bg: #080E1C;
   --proto-card-shadow: rgba(77, 184, 232, 0.08);
-  --proto-board-fill: #152238;
-  --proto-board-stroke: #1E3A5F;
-  --proto-chip-fill: #0B1120;
+  --proto-board-fill: #0C1628;
+  --proto-board-stroke: #162A45;
+  --proto-chip-fill: #050A14;
   --proto-pin-fill: #64748B;
   --proto-wire-red: #F87171;
   --proto-led-outer: #4ADE80;
   --proto-led-inner: #86EFAC;
-  --proto-label-bg: #152238;
+  --proto-label-bg: #0C1628;
   --proto-label-text: #94A3B8;
   /* Buttons */
   --btn-primary-bg: #3BA3D9;
   --btn-primary-hover-shadow: rgba(77, 184, 232, 0.30);
   --btn-ghost-bg: rgba(255, 255, 255, 0.06);
-  --btn-ghost-border: #1E3A5F;
+  --btn-ghost-border: #162A45;
   --btn-ghost-text: #4DB8E8;
   /* Eyebrow */
   --eyebrow-text: #4DB8E8;
-  --eyebrow-border: #1E3A5F;
+  --eyebrow-border: #162A45;
   --eyebrow-bg: rgba(77, 184, 232, 0.08);
   /* Trust dots border */
-  --trust-dot-border: #0F1A2E;
+  --trust-dot-border: #080E1C;
   /* Accent word */
   --accent-word: #4DB8E8;
   --accent-underline: #4DB8E8;
   /* Aurora */
-  --aurora-bg: #0B1120;
-  --aurora-white-gradient: repeating-linear-gradient(100deg,#0B1120 0%,#0B1120 7%,transparent 10%,transparent 12%,#0B1120 16%);
+  --aurora-bg: #050A14;
+  --aurora-white-gradient: repeating-linear-gradient(100deg,#050A14 0%,#050A14 7%,transparent 10%,transparent 12%,#050A14 16%);
   --aurora-invert: invert(0);
   --aurora-mask-opacity: 0.30;
 }
